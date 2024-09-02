@@ -1,0 +1,127 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.666;
+  background: black;
+  color: white;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 500%;
+  text-align: center;
+  margin-top: 4rem;
+  color: #2ec2b0;
+  line-height: 1.2;
+}
+
+h1 span {
+  padding: 5px 15px;
+  background: black;
+}
+
+.dictionary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 4rem auto;
+  max-width: 90%;
+}
+
+.dictionary > .term {
+  text-align: center;
+  max-width: 20rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05), 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: #1c1f2b;
+  transition: all 100ms ease-in-out;
+  position: relative;
+}
+
+.dictionary > .term > dt {
+  margin-bottom: 1rem;
+}
+
+dt {
+  color: #2ec2b0;
+  line-height: 1;
+}
+
+dt span {
+  font-size: 200%;
+  font-weight: 900;
+}
+
+.emoji {
+  margin: 0 auto 20px;
+  display: block;
+  font-size: 400%;
+}
+
+dd {
+  font-size: 92.5%;
+  margin-left: 0;
+}
+
+dd dt {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: inherit;
+}
+
+dd dl {
+  font-size: 90%;
+  margin: 1rem auto 0 auto;
+  letter-spacing: 0.33px;
+  max-width: 15rem;
+}
+
+dd dl .term {
+  margin-bottom: 1rem;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.dictionary > .term::after,
+.dictionary > .term::before {
+  content: " ";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  ); /*transparent 50%, blue =>for single color animation*/
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 3px;
+  border-radius: 10px;
+  animation: 3s spin linear infinite;
+}
+
+.dictionary > .term::before {
+  filter: blur(1.5rem);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
